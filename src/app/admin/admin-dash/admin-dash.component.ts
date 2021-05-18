@@ -57,7 +57,5 @@ export class AdminDashComponent implements OnInit {
  }
 
 }
-function body(arg0: string, body: any) {
-  throw new Error('Function not implemented.');
-}
+
 
