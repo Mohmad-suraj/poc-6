@@ -1,0 +1,163 @@
+<body>
+<div class="container-fluid">
+    
+        <div class="headings">
+            <h1>User Login</h1>
+           
+        </div>
+        <hr><br>
+        
+        <div class="row" *ngIf="show">
+            <div class="text-center">
+                Already have an account ?<button type="button" class="btn btn-success" (click)="change()">{{register}}</button></div>
+            <div class="col-md-12">
+               
+                <div class="box2">
+                   
+                    <form [formGroup]="registerForm" id="form1" (ngSubmit)='check()'>
+                        <div class="from-group">
+                            <label> Name : </label>
+                            <input type="text" class="form-control" formControlName="name">
+                            <small *ngIf="registerForm.get('name').errors?.required && issub  "> Name is required</small>
+                            <small *ngIf="registerForm.get('name').errors?.required && registerForm.get('name').touched  "> Name is required</small>
+                        </div>
+
+                        <div class="from-group">
+                            <label> Age: </label>
+                            <input type="number" class="form-control" formControlName="age">
+                            <small *ngIf="registerForm.get('age').errors?.required && issub "> age is required</small>
+                            <small *ngIf="registerForm.get('age').errors?.required && registerForm.get('age').touched ">age is required</small>
+                        </div>
+                        <div class="from-group">
+                            <label> Contact: </label>
+                            <input type="number" class="form-control" formControlName="phone">
+                            <small *ngIf="registerForm.get('phone').errors?.required && issub"> contact is required</small>
+                            <small *ngIf="registerForm.get('phone').errors?.pattern && registerForm.get('phone').touched"> plz check the phone number</small>
+                        </div>
+                        <div class="from-group">
+                            <label> Address: </label>
+                            <input type="text" class="form-control" formControlName="address">
+                            <small *ngIf="registerForm.get('address').errors?.required && issub"> Address is required</small>
+                            <small *ngIf="registerForm.get('address').errors?.required && registerForm.get('address').touched"> Address is required</small>
+                        </div>
+                        <div class="from-group">
+                            <label> Profession: </label>
+                            <input type="text" class="form-control" formControlName="profession">
+                            <small *ngIf="registerForm.get('profession').errors?.required && issub"> Profession is required</small>
+                            <small *ngIf="registerForm.get('profession').errors?.required && registerForm.get('profession').touched"> Profession is required</small>
+                        </div>
+                        <div class="from-group">
+                            <label> image: </label>
+                            <input type="file" class="form-control" formControlName="photo" (change)="selectfile($event)">
+                            <img [src]="myurl" height="100px" width="100px" >
+
+                        </div>
+                        <div class="from-group">
+                            <label> Email: </label>
+                            <input type="text" class="form-control" formControlName="email">
+                            <small *ngIf="registerForm.get('email').errors?.required && issub"> email is required</small>
+                            <small *ngIf="registerForm.get('email').invalid && registerForm.get('email').touched"> please check the email</small>
+                        </div>
+                        <div class="from-group">
+                            <label>Username: </label>
+                            <input type="text" class="form-control" formControlName="username">
+                            <small *ngIf="registerForm.get('username').errors?.required && issub">  username is required</small>
+                            <small *ngIf="registerForm.get('username').errors?.required && registerForm.get('username').touched">  username is required</small>
+                        </div>
+                        <div class="from-group">
+                            <label> Password: </label>
+                            <input type="password" class="form-control" formControlName="newpasswrd">
+                            <small *ngIf="registerForm.get('newpasswrd').errors?.required && issub"> Password is required</small>
+                            <small *ngIf="registerForm.get('newpasswrd').errors?.pattern && registerForm.get('newpasswrd').touched"> invalid password</small>
+                        </div>
+                       
+
+                        <br>
+
+                        <button type="submit" class="btn btn-danger">Register</button>
+                        <br>
+                        <br>
+                        <br>
+                       
+                    </form>
+                    
+
+                </div>
+            
+            </div>
+
+        </div>
+
+
+
+
+
+
+        <div class="row" *ngIf="!show">
+            <div class="col-md-6">
+                <div class="text-center">
+                    <img src="../../../assets/images/profile.png"><br><br>
+                </div>
+            </div>
+            <div class="col-md-6">
+
+                <div class="box1">
+                    <div class="text-center">
+                        <img src="../../../assets/images/team.png" alt="team" id="im1">
+                    </div>
+
+                    <form id="f1"class="contact-form" (submit)="sendEmail($event)">
+                        <p style="color:black">If you are new user please verify your email</p>
+                        <label style="color:black" >Email</label><br>
+                        <input type="email" placeholder="Enter your Email and send Request" name="user_email" [(ngModel)]="mail" required>
+                        <br>
+                        <label [hidden]="true">Message</label>
+                        <textarea [hidden]="true" name="message" [(ngModel)]="num"></textarea>
+                        <br>
+                        <input type="submit" value="Send request to recieve otp">
+                    </form>
+                    <br>
+                    <br>
+                    
+                    <form id="f2">
+                        
+                     <input type="number" placeholder="Enter OTP" name ="otpmain" [(ngModel)]="otp" required>
+                     <button (click)="verify()">verify</button>
+                    </form>
+                    <br><br>
+
+                    <form [formGroup]="loginUser" (ngSubmit)="login()" id="form2">
+                         <h4>login with your credentials</h4>
+                        <div class="from-group">
+                            <label> Email: </label>
+                            <input type="text" class="form-control" formControlName="email">
+                            <small *ngIf="loginUser.get('email').errors?.required && issub1"> email is required</small>
+                            <small *ngIf="loginUser.get('email').errors?.required && loginUser.get('email').touched"> please check the email</small>
+                        </div>
+                        <div class="from-group">
+                            <label> User Name : </label>
+                            <input type="text" class="form-control" formControlName="username">
+                            <small *ngIf="loginUser.get('username').errors?.required && issub1"> username is required</small>
+                            <small *ngIf="loginUser.get('username').errors?.required && loginUser.get('username').touched"> username is required</small>
+                            
+                        </div>
+                        <div class="from-group">
+                            <label> password :</label>
+                            <input type="password" class="form-control" formControlName="password">
+                            <small *ngIf="loginUser.get('password').errors?.required && issub1"> password is required</small>
+                            <small *ngIf="loginUser.get('password').errors?.pattern && loginUser.get('password').touched"> please check password </small>  
+                        </div>
+                        <br>
+
+                        <button type="submit" class="btn btn-primary">login</button>
+                    </form>
+                </div>
+
+
+            </div>
+
+
+        </div>
+    
+</div>
+</body>

@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+.col{
+    display:flex;
+}
+.card{
+    margin:50px;
+}
+body{
+    width:100%;
+    min-height: 720px;
+    background: linear-gradient(to right, rgb(67, 64, 245) , rgb(100, 245, 238));
+}
+#logout{
+    float:right;
+    margin-right:50px;
+}
+.headings{
+    text-align: center;
+    font-family: 'Kaushan Script', cursive;
+}
+button{
+    margin-right:30px;
+   
+}

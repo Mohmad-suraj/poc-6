@@ -1,0 +1,66 @@
+<body>
+<div class="conatiner-fluid">
+    <br><br>
+    <div class="text-center">
+        <h1>This is user Dashboard</h1>  
+    </div>
+         <div id="rgt">
+           
+            <button class="btn btn-primary" (click)="logout()">Log Out</button>
+        </div>
+        <br>
+        <br>
+        <div>
+            <div class="text-center">
+                <hr>
+                <h1>About</h1>
+                <hr>
+            </div>
+        </div>
+
+    <div class="row">
+    <div class="col-md-6" id="im">
+        <img src="../../../assets/images/team.png">
+    </div>
+    <div class="col-md-6" id="im">
+    <div class="card " style="width: 30rem;" *ngFor="let det of info">
+        
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item bg-primary"><img style="width:200px;height:200px;"[src]="det.photo"></li>
+          <li class="list-group-item text-white bg-primary">Name :{{det.name}}</li>
+          <li class="list-group-item text-white bg-primary">Age: {{det.age}}</li>
+          <li class="list-group-item text-white bg-primary">Contact: {{det.phone}}</li>
+          <li class="list-group-item text-white bg-primary">address: {{det.address}}</li>
+          <li class="list-group-item text-white bg-primary">profession: {{det.profession}}</li>
+          <li class="list-group-item text-white bg-primary">Email: {{det.email}}</li>
+        </ul>
+      </div>
+    </div>
+    </div>
+<br><br>
+
+    <div id="friends" class="container">
+        <hr>
+        <div class="text-center">
+            <h1>Friends you may know</h1>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col" *ngFor="let data of friendsData">
+        <div class="card d-flex" style="width: 18rem;" >
+            <img [src]="data.photo" class="card-img-top" alt="image">
+            <div class="card-body">
+              <h5 class="card-title" style="text-align: center;">{{data.username}}</h5>
+            <div class="text-center"> 
+           <button class="btn btn-primary" type="button" (click)="add(data.id)">add</button>
+        </div> 
+            </div>
+          </div>
+        </div>
+    </div>
+    </div>
+
+    
+</div>
+
+</body>

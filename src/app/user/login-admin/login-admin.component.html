@@ -1,0 +1,39 @@
+<body>
+
+    <div class="headings">
+        <h1>Admin Login</h1>  
+    </div>
+    <hr><br>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="text-center">
+                <img src="../../../assets/images/user.png"><br><br>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box1">
+                <div class="text-center">
+                    <img src="../../../assets/images/administrator.png" alt="team" id="im1">
+                </div>
+                <form [formGroup]="loginadmin" (ngSubmit)="login()" id="form2">
+                   
+                    <div class="from-group">
+                        <label>User Name : </label>
+                        <input type="text" class="form-control" formControlName="username">
+                        <small *ngIf="loginadmin.get('username').errors?.required && issub"> username is required</small>
+                         <small *ngIf="loginadmin.get('username').errors?.required && loginadmin.get('username').touched">username is required</small> 
+                       </div>
+                    <div class="from-group">
+                        <label> password :</label>
+                        <input type="password" class="form-control" formControlName="password">
+                        <small *ngIf="loginadmin.get('password').errors?.required && issub"> password is required</small>
+                        <small *ngIf="loginadmin.get('password').errors?.pattern && loginadmin.get('password').touched">please check password </small>
+                    </div>
+                    <br>
+
+                    <button type="submit" class="btn btn-primary">login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
